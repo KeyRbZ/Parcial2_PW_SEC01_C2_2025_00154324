@@ -13,3 +13,16 @@ app.use('/cuentas', require('./routes/cuentas'));
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+// Ruta para la raíz
+app.get('/', (req, res) => {
+  res.json({ 
+    message: "API de Cuentas Bancarias - Examen II",
+    endpoints: {
+      todas_cuentas: "/cuentas",
+      cuenta_por_id: "/cuentas/:id",
+      busqueda: "/cuentas/search?queryParam=valor",
+      balance_total: "/cuentas/balance/total"
+    }
+  });
+});
